@@ -1,0 +1,39 @@
+{
+  "name": "hack-hazards",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@coinbase/onchainkit": "^0.38.7",
+    "@radix-ui/react-navigation-menu": "^1.2.9",
+    "@radix-ui/react-slot": "^1.2.0",
+    "@react-three/drei": "^10.0.6",
+    "@react-three/fiber": "^9.1.2",
+    "class-variance-authority": "^0.7.1",
+    "ethers": "^6.13.5",
+    "leva": "^0.10.0",
+    "lucide-react": "^0.501.0",
+    "next": "^15.3.1",
+    "ox": "^0.7.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-icons": "^5.5.0",
+    "sharp": "^0.34.5",
+    "web3": "^4.16.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.1.4",
+    "typescript": "^5"
+  }
+}
