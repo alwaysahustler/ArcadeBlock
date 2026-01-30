@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { ethers } from 'ethers';
+import { devLog } from "@/lib/utils";
 
 type Position = {
   row: number;
@@ -145,10 +146,10 @@ export default function WordsMatch() {
 
           // Check if wallet is connected
           const accounts = await provider.listAccounts();
-          console.log('Accounts:', accounts); // Debug log
+          devLog('Accounts:', accounts);
           if (accounts.length > 0 && typeof accounts[0] === 'string') {
             setWalletAddress(accounts[0]);
-            console.log('Set walletAddress:', accounts[0]); // Debug log
+            devLog('Set walletAddress:', accounts[0]);
             // Fetch previous completion time
             const time = await contractInstance.getTime(accounts[0]);
             setPreviousTime(Number(time));
@@ -170,7 +171,7 @@ export default function WordsMatch() {
         const accounts = await window.ethereum.request({
           method: 'eth_requestAccounts',
         });
-        console.log('Connected accounts:', accounts); // Debug log
+        devLog('Connected accounts:', accounts);
         if (accounts.length > 0 && typeof accounts[0] === 'string') {
           setWalletAddress(accounts[0]);
           if (contract) {
@@ -220,7 +221,7 @@ export default function WordsMatch() {
           const completionTime = GAME_DURATION - timeLeft;
           const tx = await contract.saveTime(completionTime);
           await tx.wait();
-          console.log('Time saved to blockchain:', completionTime);
+          devLog('Time saved to blockchain:', completionTime);
           setPreviousTime(completionTime);
         } catch (error) {
           console.error('Error saving time to blockchain:', error);
@@ -355,7 +356,7 @@ export default function WordsMatch() {
 
   const handleStartGame = () => {
     if (!walletAddress) {
-董事:       alert('Please connect your wallet to start the game.');
+      alert('Please connect your wallet to start the game.');
       return;
     }
     setGameStarted(true);

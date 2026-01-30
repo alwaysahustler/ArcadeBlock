@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import IMG01 from '@/public/sprites/dinosaur.png';
 import Web3 from 'web3';
+import { devLog } from "@/lib/utils";
 
 interface Obstacle {
   id: number;
@@ -230,8 +231,8 @@ const DinoRun: React.FC = () => {
       // Handle both numeric and hex chainId formats
       const chainId = parseInt(chainIdHex, 16);
       
-      console.log("Current chain ID:", chainId);
-      console.log("Chain ID hex:", chainIdHex);
+      devLog("Current chain ID:", chainId);
+      devLog("Chain ID hex:", chainIdHex);
       
       // Check if we're on Monad testnet (chainId 10143)
       return chainId === MONAD_CHAIN_ID || chainIdHex.toLowerCase() === MONAD_CHAIN_ID_HEX;
@@ -273,7 +274,7 @@ const DinoRun: React.FC = () => {
           
           // Listen for chain changes
           window.ethereum.on('chainChanged', (chainId: string) => {
-            console.log('Network changed to:', chainId);
+            devLog('Network changed to:', chainId);
             // Check if the new chain is Monad testnet
             const isMonad = parseInt(chainId, 16) === MONAD_CHAIN_ID || 
                             chainId.toLowerCase() === MONAD_CHAIN_ID_HEX;
@@ -307,7 +308,7 @@ const DinoRun: React.FC = () => {
           console.error("Failed to initialize web3:", error);
         }
       } else {
-        console.log("No Ethereum browser extension detected");
+        devLog("No Ethereum browser extension detected");
       }
     };
 
@@ -459,7 +460,7 @@ const DinoRun: React.FC = () => {
       
       // Get global high score (optional display)
       const globalHighScore = await contract.methods.getHighestScore().call();
-      console.log("Global high score:", globalHighScore);
+      devLog("Global high score:", globalHighScore);
       
     } catch (error) {
       console.error("Error fetching high score:", error);
@@ -518,7 +519,7 @@ const DinoRun: React.FC = () => {
         params: [transactionParameters],
       });
       
-      console.log("Transaction sent:", txHash);
+      devLog("Transaction sent:", txHash);
       setTransactionHash(txHash);
       
       // Update local storage as well

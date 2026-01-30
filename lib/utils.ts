@@ -29,3 +29,11 @@ export function formatAmount(amount: string): string {
   return Number.parseFloat(amount).toFixed(4)
 }
 
+export function devLog(...args: any[]) {
+  if (process.env.NODE_ENV !== "production") {
+    // Use console.debug so logs can be filtered easily
+    // Prefix with [dev] for easier searching in logs
+    // eslint-disable-next-line no-console
+    console.debug("[dev]", ...args)
+  }
+}

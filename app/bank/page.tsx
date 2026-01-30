@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Edit3, ExternalLink, Send } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 import { useAccount } from "@/hooks/use-account"
+import { devLog } from "@/lib/utils"
 import { TransactionDefault } from "@coinbase/onchainkit/transaction"
 import { parseEther, type Hex } from "viem"
 
@@ -118,7 +119,7 @@ export default function TwitchStreamPage() {
 
   const handleStatus = useCallback(
     (status: any) => {
-      console.log("Transaction status:", status.statusName)
+      devLog("Transaction status:", status.statusName)
       if (status.statusName === "preparing") {
         setIsSending(true)
       } else if (status.statusName === "rejected" || status.statusName === "failed") {
