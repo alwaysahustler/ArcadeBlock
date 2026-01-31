@@ -1,112 +1,101 @@
-# 🎮 ArcadeBlock – AI + Blockchain Powered Gaming Metaverse  
+# ArcadeBlock 🎮
 
-**ArcadeBlock** is a decentralized gaming ecosystem that fuses **classic mini-games, AI-driven adventures, and blockchain-secured assets**.  
-Built with **Groq AI**, **Base chain**, and **Monad chain**, it creates a new era of **immersive, intelligent, and verifiable gameplay**.  
-
----
-
-## 🚩 The Problem ArcadeBlock Solves  
-
-Traditional gaming often suffers from **disconnected experiences**, **centralized ownership**, and **limited intelligence** in gameplay.  
-
-ArcadeBlock solves these challenges by merging:  
-- 🤖 **Groq AI** → Powers **story-driven text adventures** with contextual, adaptive interactions.  
-- 🔗 **Base Blockchain** → Handles **secure in-game transactions** and **verifiable asset ownership**.  
-- ⚡ **Monad Chain** → Optimized for **ultra-fast real-time gameplay** like Snake and Dino Run.  
+A modern, open-source web arcade featuring classic mini-games enhanced with AI-driven interactions and optional Web3 integrations. Built with Next.js (App Router), a small Flask AI backend, and a collection of fun, modular games (Snake, DinoRun, TicTacToe, RPS, Word Match, and more).
 
 ---
 
-## 🕹️ Gameplay Features  
-
-### 🟢 Classic Games Reimagined  
-- Play **Snake, Dino Run, TicTacToe, Rock-Paper-Scissors, Word Match, and Typing Adventure**—all with **on-chain state tracking**.  
-
-### 🤖 Intelligent Adventures  
-- Groq AI adapts dynamically to **game history** and **in-game lore**, making text adventures feel alive.  
-
-### 🔗 On-Chain Ownership  
-- Transactions and scores are **stored securely on-chain**.  
-- Players can **own NFTs, transfer assets, and prove achievements** transparently.  
+## Key highlights ✅
+- Fast Next.js frontend using the App Router and Tailwind CSS
+- Small Flask-based AI backend (powered by Groq) for chat / adventure features
+- Modular game components to make adding new games straightforward
+- Optional wallet & on-chain integrations included in the codebase
 
 ---
 
-## 🎮 Mini-Games Included  
+## Quick start (development) ⚡
+Prerequisites:
+- Node.js 18+ and npm
+- Python 3.11+ and pip (for the AI backend)
+- Optional: Git, Docker, and a wallet like MetaMask for Web3 features
 
-1. **TicTacToe**  
-   - Play vs bot.  
-   - 🏆 Win → Mint an **NFT on Monad chain**.  
+Frontend (app):
 
-2. **Rock-Paper-Scissors**  
-   - 10 rounds vs bot.  
-   - 📝 Number of wins stored **on-chain**.  
-
-3. **Words Match**  
-   - Find words from a letter grid.  
-   - ⏱️ 2-minute time limit.  
-
-4. **Snake**  
-   - Classic snake grows by eating seeds.  
-   - 🏆 Highest score stored with player’s address **on-chain**.  
-
-5. **Dino Run**  
-   - Side-scrolling dino runner.  
-   - 🏆 Best score stored in Monad chain.  
-
-6. **Typing Adventure**  
-   - Fast typing challenge.  
-   - ⛓️ Built entirely **on Monad chain**.  
-
----
-
-## 🧩 Challenges We Solved  
-
-- ⚡ **Real-time gameplay + blockchain** → Offloaded non-critical events off-chain, logged only **important state changes** on Base/Monad.  
-- 🧠 **Groq AI hallucinations** → Solved by **scoped prompts + fallback logic**.  
-- ⛓️ **Gas-efficient Snake logic** → Rewrote modular logic and **precompiled key functions** for optimization.  
-
----
-
-## 🛠️ Tech Stack  
-
-- **AI:** Groq AI (text-based adaptive storytelling)  
-- **Blockchain:**  
-  - Base → On-chain secure transactions  
-  - Monad → Ultra-fast game logic + score storage  
-- **Frontend:** React.js, Vite, Tailwind CSS  
-- **Wallet Integration:** MetaMask / Web3.js  
-- **Game Logic:** Modular JavaScript + smart contracts  
-
----
-
-## 🚀 Getting Started
+1. Install dependencies
 
 ```bash
-# Clone the repository
-git clone https://github.com/0xgokkull/hack-hazards.git
-
-# Navigate to the project folder
-cd hack-hazards
-
-# Install dependencies
-npm install --legacy-peer-deps
-
-# Start the development server
-npm start
+npm install
 ```
+
+2. Run the Next.js dev server
+
+```bash
+npm run dev
+```
+
+Open http://localhost:3000
+
+AI backend (optional):
+
+1. Create and activate a virtual environment
+
+```bash
+cd ai-backend
+python -m venv .venv
+source .venv/bin/activate  # macOS / Linux
+.venv\Scripts\activate     # Windows (PowerShell)
+```
+
+2. Install Python dependencies and run the server
+
+```bash
+pip install -r requirements.txt
+export GROQ_API_KEY="your_groq_api_key"  # or set in .env
+python app.py
+```
+
+The API listens on http://localhost:5000 by default.
+
 ---
 
-# 🌍 Use Cases
-
-🎮 Gamers → Enjoy fun mini-games with verifiable achievements.
-
-🤝 Communities → Build interactive ecosystems around shared gaming.
-
-🏆 eSports & Competitions → Transparent leaderboards, provable scores.
-
-🔗 Web3 Developers → Expand gaming logic onto decentralized platforms.
+## Project structure 🔧
+- `/app` — Next.js app (pages / layout / games)
+- `/components` — Shared UI & game components
+- `/ai-backend` — Small Flask service for AI-driven responses
+- `/public` — Static assets (sprites, images)
 
 ---
 
-# 📜 License
-© 2025 Arcade Block. All rights reserved. Designed by Team Fortiv.
-For support or contributions, contact emmanuelsk04@gmail.com or open an issue on GitHub.
+## Adding a game 💡
+1. Create a new React component under `app/game/` or `components/`
+2. Export a page that mounts the component and wires up state
+3. Add routing and a link from the main games list
+
+If you want the game to persist scores or assets on-chain, follow the patterns used in the repository and add tests.
+
+---
+
+## Contributing 🤝
+- Fork the repo, create a feature branch (feature/your-thing)
+- Open a PR with a clear description and screenshots if applicable
+- Run `npm run lint` and ensure formatting is consistent
+
+Check `CONTRIBUTING.md` (if present) for more specifics.
+
+---
+
+## Development tips ✨
+- Use the browser dev tools to inspect canvas and React state
+- Keep game logic pure and move heavy computations off the render path
+- Use `components/GameCanvas.tsx` as the base for canvas-based games
+
+---
+
+## License
+This project is open source — check the repository for a `LICENSE` file and follow its terms.
+
+---
+
+## Contact
+Questions? Open an issue or reach out to the repository owner.
+
+Thank you for checking out ArcadeBlock — have fun building and playing! 🎉
